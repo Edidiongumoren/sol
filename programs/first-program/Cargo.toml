@@ -1,0 +1,8 @@
+[package]
+name = "first-program"
+version = "0.1.0"
+description = "My First Anchor Program"
+edition = "2021"
+
+[dependencies]
+anchor-lang = "0.30.0"

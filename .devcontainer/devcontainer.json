@@ -1,3 +1,16 @@
 {
-    "postCreateCommand": "sh -c \"$(curl -sSfL https://release.anza.xyz/v1.18.15/install)\" && rm -f ~/.local/share/solana/install/active_release/bin/cargo-{build,test}-bpf && ln -s ~/.local/share/solana/install/active_release/bin/cargo-build-sbf ~/.local/share/solana/install/active_release/bin/cargo-build-bpf && ln -s ~/.local/share/solana/install/active_release/bin/cargo-test-sbf ~/.local/share/solana/install/active_release/bin/cargo-test-bpf && export PATH=\"$HOME/.local/share/solana/install/active_release/bin:$PATH\""
-  }
+  "image": "mcr.microsoft.com/devcontainers/base:ubuntu-22.04",
+  "postCreateCommand": "bash ./.devcontainer/setup.sh",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "rust-lang.rust-analyzer",
+        "solana.solana"
+      ]
+    }
+  },
+  "mounts": [
+    "source=anchor-global-cache,target=/home/codespace/.anchor",
+    "source=rust-cache,target=/home/codespace/.cargo"
+  ]
+}
